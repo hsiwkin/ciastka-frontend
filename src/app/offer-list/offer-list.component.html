@@ -3,14 +3,18 @@
     <h1>
       Znaleźliśmy
       <span class="badge badge-secondary offers-count">
-        {{ offers.length }}</span
+        {{ (offers | async)?.length }}</span
       >
       ofert w Twojej okolicy!
     </h1>
   </div>
 
   <div class="offers-container">
-    <div *ngFor="let offer of offers" class="card" style="width: 18rem;">
+    <div
+      *ngFor="let offer of offers | async"
+      class="card"
+      style="width: 18rem;"
+    >
       <img [src]="offer.imageUrl" class="card-img-top" alt="..." />
       <div class="card-body">
         <h5 class="card-title">{{ offer.title }}</h5>

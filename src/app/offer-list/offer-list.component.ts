@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { offers } from "../offers";
+import { OffersService } from "../services/offers.service";
 
 @Component({
   selector: "app-offer-list",
@@ -7,9 +7,12 @@ import { offers } from "../offers";
   styleUrls: ["./offer-list.component.scss"]
 })
 export class OfferListComponent implements OnInit {
-  offers = offers;
+  offers;
 
-  constructor() {}
+  constructor(private offersService: OffersService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.offers = this.offersService.getOffers();
+    console.log(this.offers);
+  }
 }

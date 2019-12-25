@@ -6,7 +6,7 @@
   </p>
   <hr class="my-4" />
   <p>
-    Wyszukaj wypieki spośród {{ offers.length }} ofert, jakie zostały
+    Wyszukaj wypieki spośród {{ (offers | async)?.length }} ofert, jakie zostały
     opublikowane w Twojej okolicy.
   </p>
   <a

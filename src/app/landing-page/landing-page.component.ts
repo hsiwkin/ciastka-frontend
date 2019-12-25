@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { offers } from "../offers";
+import { OffersService } from "../services/offers.service";
 
 @Component({
   selector: "app-landing-page",
@@ -7,9 +7,11 @@ import { offers } from "../offers";
   styleUrls: ["./landing-page.component.scss"]
 })
 export class LandingPageComponent implements OnInit {
-  offers = offers;
+  offers;
 
-  constructor() {}
+  constructor(private offersService: OffersService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.offers = this.offersService.getOffers();
+  }
 }
