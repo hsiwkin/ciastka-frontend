@@ -5,9 +5,6 @@
     type="button"
     data-toggle="collapse"
     data-target="#navbarNav"
-    aria-controls="navbarNav"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
   >
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -17,5 +14,26 @@
         <a class="nav-link" [routerLink]="['offers']">Lista ofert</a>
       </li>
     </ul>
+
+    <div class="nav-functional ml-auto navbar-nav">
+      <div class="input-group search-container nav-item mr-5">
+        <input
+          class="form-control mr-2 nav-item search-container__input"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button
+          class="btn btn-outline-success my-sm-0 nav-item search-container__submit-btn"
+          type="submit"
+        >
+          Search
+        </button>
+      </div>
+
+      <div class="nav-item">
+        <a class="nav-link" [routerLink]="['login']">Log In</a>
+      </div>
+    </div>
   </div>
 </nav>

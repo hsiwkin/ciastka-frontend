@@ -1,0 +1,15 @@
+.main-banner {
+  margin-top: 1em;
+  background: url("https://images.unsplash.com/photo-1461009312844-e80697a81cc7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=980&q=80");
+
+  background-position-y: 40%;
+  background-size: 100%;
+
+  color: #efd28d;
+  text-shadow: 1px 1px black;
+
+  #offers-list-btn {
+    background: #e54b4b !important;
+    border-color: #e54b4b !important;
+  }
+}

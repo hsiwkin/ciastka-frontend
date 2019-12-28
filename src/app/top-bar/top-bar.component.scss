@@ -1,0 +1,20 @@
+nav {
+  &.bg-primary {
+    background: #e54b4b !important;
+  }
+
+  .nav-functional {
+    .search-container {
+      width: 18em;
+
+      &__submit-btn {
+        border-color: white;
+        color: white;
+
+        &:hover {
+          background: none;
+        }
+      }
+    }
+  }
+}
