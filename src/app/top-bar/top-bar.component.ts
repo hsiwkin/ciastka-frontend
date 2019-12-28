@@ -10,5 +10,7 @@ export class TopBarComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userName = "Test user";
+  }
 }

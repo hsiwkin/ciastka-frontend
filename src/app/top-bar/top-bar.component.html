@@ -32,7 +32,29 @@
       </div>
 
       <div class="nav-item">
-        <a class="nav-link" [routerLink]="['login']">Log In</a>
+        <a
+          *ngIf="!userName; else elseBlock"
+          class="nav-link"
+          [routerLink]="['login']"
+          >Log In</a
+        >
+
+        <ng-template #elseBlock>
+          <div class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-toggle="dropdown"
+            >
+              {{ userName }}
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" href="#">Log Out</a>
+            </div>
+          </div>
+        </ng-template>
       </div>
     </div>
   </div>
