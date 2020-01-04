@@ -17,7 +17,10 @@
           {{ activeOffer?.extendedDescription }}
         </p>
         <p class="card-text">
-          <small class="text-muted">Last updated 3 mins ago</small>
+          <small class="text-muted"
+            >Data ostatniej aktualizacji:
+            {{ activeOffer?.updatedAt.fromNow() }}</small
+          >
         </p>
       </div>
     </div>

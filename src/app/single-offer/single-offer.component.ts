@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import * as moment from "moment";
 
 import { OffersService } from "../_services/offers.service";
 import { IOffer } from "../_interfaces/offer.interface";
@@ -23,6 +24,8 @@ export class SingleOfferComponent implements OnInit {
 
       this.offersService.getOffers().subscribe((offers: Array<IOffer>) => {
         this.activeOffer = offers.find(offer => offer.id === offerId);
+
+        console.log(this.activeOffer.updatedAt);
       });
     });
   }
