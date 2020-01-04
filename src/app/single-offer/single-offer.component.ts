@@ -24,8 +24,6 @@ export class SingleOfferComponent implements OnInit {
 
       this.offersService.getOffers().subscribe((offers: Array<IOffer>) => {
         this.activeOffer = offers.find(offer => offer.id === offerId);
-
-        console.log(this.activeOffer.updatedAt);
       });
     });
   }

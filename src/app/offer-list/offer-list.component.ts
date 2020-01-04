@@ -13,6 +13,5 @@ export class OfferListComponent implements OnInit {
 
   ngOnInit() {
     this.offers = this.offersService.getOffers();
-    console.log(this.offers);
   }
 }

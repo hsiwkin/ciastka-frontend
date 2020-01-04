@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import * as L from "leaflet";
 
 @Component({
@@ -6,7 +6,9 @@ import * as L from "leaflet";
   templateUrl: "./map.component.html",
   styleUrls: ["./map.component.scss"]
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, OnChanges {
+  @Input() pointerLocations: Array<[number, number]>;
+
   private map;
 
   constructor() {}
@@ -15,6 +17,21 @@ export class MapComponent implements OnInit {
 
   ngAfterViewInit() {
     this.initMap();
+  }
+
+  ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
+    this.pointerLocations
+      .filter(location => {
+        return (
+          location &&
+          location.length === 2 &&
+          location[0] !== null &&
+          location[1] !== null
+        );
+      })
+      .forEach(location => {
+        L.marker(location).addTo(this.map);
+      });
   }
 
   private initMap(): void {

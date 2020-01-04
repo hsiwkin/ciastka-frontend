@@ -15,7 +15,7 @@
     "description": "Połączenie porzeczek i pulchnego ciasta",
     "extendedDescription": "Tarta na maślanym kakaowym spodzie wyłożonym własnej produkcji prażonymi malinami, wypełniona ganache z czekolady ciemnej. Dekorowana czekoladkami i obsypana czekoladową posypką.",
     "updatedAt": "02.01.2020",
-    "location": [52.233134, 20.998249]
+    "location": [52.261734, 21.002889]
   },
   {
     "id": 3,
@@ -24,7 +24,7 @@
     "description": "Połączenie porzeczek i pulchnego ciasta",
     "extendedDescription": "Sernik na bazie twarogu, wyjątkowego smaku nadaje toffi. Bogato dekorowany orzechami włoskimi w karmelu.",
     "updatedAt": "01.01.2020",
-    "location": [52.233134, 20.998249]
+    "location": [52.243336, 21.051277]
   },
   {
     "id": 4,
@@ -33,7 +33,7 @@
     "description": "Połączenie porzeczek i pulchnego ciasta",
     "extendedDescription": "Tradycyjne ciasto piernikowe przełożone domowymi powidłami śliwkowymi z nutą korzenną. Ciasto długo utrzymuje naturalną wilgoć. Oblane deserową czekoladą i udekorowane bakaliami w karmelu.",
     "updatedAt": "20.12.2019",
-    "location": [52.233134, 20.998249]
+    "location": [52.23178, 21.061039]
   },
   {
     "id": 5,
@@ -42,7 +42,7 @@
     "description": "Połączenie porzeczek i pulchnego ciasta",
     "extendedDescription": "Delikatnie, czekoladowe ciasto piaskowe połączone z ciastem o wyrazistym smaku pomarańczy. Smakowitym dopełnieniem jest lekka polewa karmelowa z wiórkami białej czekolady.",
     "updatedAt": "12.12.2019",
-    "location": [52.233134, 20.998249]
+    "location": [52.212343, 21.067234]
   },
   {
     "id": 6,
@@ -51,6 +51,6 @@
     "description": "Połączenie porzeczek i pulchnego ciasta",
     "extendedDescription": "Ciasto czekoladowe z dodatkiem powideł śliwkowych oraz marcepanem w dwóch smakach pomarańczowym i pistacjowym, oblane czekoladą.",
     "updatedAt": "1.12.2019",
-    "location": [52.233134, 20.998249]
+    "location": [52.162805, 21.027335]
   }
 ]
