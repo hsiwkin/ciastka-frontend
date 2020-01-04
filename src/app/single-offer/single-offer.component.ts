@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 
-import { OffersService } from "../services/offers.service";
-import { IOffer } from "../interfaces/offer.interface";
+import { OffersService } from "../_services/offers.service";
+import { IOffer } from "../_interfaces/offer.interface";
 
 @Component({
   selector: "app-single-offer",

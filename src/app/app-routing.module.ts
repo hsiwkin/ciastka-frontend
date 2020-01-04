@@ -4,6 +4,7 @@ import { LandingPageComponent } from "./landing-page/landing-page.component";
 import { OfferListComponent } from "./offer-list/offer-list.component";
 import { SingleOfferComponent } from "./single-offer/single-offer.component";
 import { AuthComponent } from "./auth/auth.component";
+import { MapComponent } from "./map/map.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: "offers/:offerId",
     component: SingleOfferComponent
+  },
+  {
+    path: "map",
+    component: MapComponent
   }
 ];
 
