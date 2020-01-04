@@ -5,6 +5,7 @@ import { OfferListComponent } from "./offer-list/offer-list.component";
 import { SingleOfferComponent } from "./single-offer/single-offer.component";
 import { AuthComponent } from "./auth/auth.component";
 import { MapComponent } from "./map/map.component";
+import { AllOffersMapComponent } from "./all-offers-map/all-offers-map.component";
 
 const routes: Routes = [
   {
@@ -25,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: "map",
-    component: MapComponent
+    component: AllOffersMapComponent
   }
 ];
 
