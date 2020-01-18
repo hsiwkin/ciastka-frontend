@@ -9,9 +9,17 @@
       id="exampleInputEmail1"
       aria-describedby="emailHelp"
       formControlName="email"
+      [class.is-invalid]="
+        !authForm.get('email').valid && authForm.get('email').touched
+      "
     />
     <small id="emailHelp" class="form-text text-muted"
       >We'll never share your email with anyone else.</small
+    >
+    <span
+      *ngIf="!authForm.get('email').valid && authForm.get('email').touched"
+      class="invalid-feedback"
+      >Please enter a valid email</span
     >
   </div>
   <div class="form-group">
@@ -19,9 +27,19 @@
     <input
       type="password"
       class="form-control"
+      [class.is-invalid]="
+        !authForm.get('password').valid && authForm.get('password').touched
+      "
       id="exampleInputPassword1"
       formControlName="password"
     />
+    <span
+      *ngIf="
+        !authForm.get('password').valid && authForm.get('password').touched
+      "
+      class="invalid-feedback d-block"
+      >Please enter a password</span
+    >
   </div>
 
   <button type="submit" class="btn btn-primary standard-btn">Submit</button>

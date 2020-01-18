@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder } from "@angular/forms";
+import { FormBuilder, FormControl, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-auth",
@@ -11,8 +11,8 @@ export class AuthComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
     this.authForm = formBuilder.group({
-      email: "",
-      password: ""
+      email: new FormControl("", [Validators.required, Validators.email]),
+      password: new FormControl("", Validators.required)
     });
   }
 
