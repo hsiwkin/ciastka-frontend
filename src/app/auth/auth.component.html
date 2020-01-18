@@ -2,7 +2,7 @@
   <h3>Log in</h3>
   <hr />
   <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
+    <label for="exampleInputEmail1">Email address / login</label>
     <input
       type="email"
       class="form-control"
@@ -42,5 +42,11 @@
     >
   </div>
 
-  <button type="submit" class="btn btn-primary standard-btn">Submit</button>
+  <button
+    type="submit"
+    class="btn btn-primary standard-btn"
+    [disabled]="!authForm.valid"
+  >
+    Submit
+  </button>
 </form>
