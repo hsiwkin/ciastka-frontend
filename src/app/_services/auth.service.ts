@@ -5,16 +5,16 @@ import { IAuth } from "../_interfaces/auth.interface";
 import { Observable } from "rxjs";
 import { tap } from "rxjs/operators";
 
+import { environment } from "../../environments/environment";
+
 @Injectable({
   providedIn: "root"
 })
 export class AuthService {
-  API_ENDPOINT: string = "https://ciastkazonback.herokuapp.com/api/auth";
-
   constructor(private http: HttpClient) {}
 
   logIn(authData: IAuth): Observable<any> {
-    const loginPath = path.join(this.API_ENDPOINT, "signin");
+    const loginPath = path.join(`${environment}/api/auth`, "signin");
     return this.http
       .post(loginPath, {
         password: authData.password,
@@ -22,8 +22,8 @@ export class AuthService {
       })
       .pipe(
         tap(result => {
-          // TODO
-          console.log("handle hash", result);
+          const { accessToken } = result;
+          localStorage.setItem("access_token", accessToken);
         })
       );
   }

@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import * as moment from "moment";
 import { map } from "rxjs/operators";
+import { Observable } from "rxjs";
 
 import { IOffer } from "../_interfaces/offer.interface";
-import { Observable } from "rxjs";
+import { environment } from "../../environments/environment";
 
 @Injectable({
   providedIn: "root"
@@ -12,14 +13,23 @@ import { Observable } from "rxjs";
 export class OffersService {
   constructor(private http: HttpClient) {}
 
-  getOffers(): Observable<Array<IOffer>> {
-    return this.http.get("/assets/mocks/offers.json").pipe(
-      map((offers: any) => {
-        return offers.map(offer => {
-          offer.updatedAt = moment(offer.updatedAt, "DD.MM.YYYY", "pl");
-          return offer;
-        });
+  getOffers(page: number = 0, size: number = 30): Observable<Array<IOffer>> {
+    const params = new HttpParams()
+      .set("page", "" + page)
+      .set("size", "" + size);
+
+    return this.http
+      .get(`${environment.API_ENDPOINT}/offers`, {
+        params
       })
-    );
+      .pipe(
+        map((offers: any) => {
+          return offers.content.map(offer => {
+            offer.updatedAt = moment(offer.updatedAt, "DD.MM.YYYY", "pl");
+            offer.location = [offer.xloc, offer.yloc];
+            return offer;
+          });
+        })
+      );
   }
 }
