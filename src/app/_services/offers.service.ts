@@ -19,7 +19,7 @@ export class OffersService {
       .set("size", "" + size);
 
     return this.http
-      .get(`${environment.API_ENDPOINT}/offers`, {
+      .get(`${environment.API_ENDPOINT}/api/offers`, {
         params
       })
       .pipe(

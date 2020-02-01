@@ -4,6 +4,7 @@ import * as moment from "moment";
 
 import { OffersService } from "../_services/offers.service";
 import { IOffer } from "../_interfaces/offer.interface";
+import { ShoppingService } from "../_services/shopping.service";
 
 @Component({
   selector: "app-single-offer",
@@ -12,10 +13,12 @@ import { IOffer } from "../_interfaces/offer.interface";
 })
 export class SingleOfferComponent implements OnInit {
   activeOffer: IOffer;
+  bought: Boolean = false;
 
   constructor(
     private route: ActivatedRoute,
-    private offersService: OffersService
+    private offersService: OffersService,
+    private shoppingService: ShoppingService
   ) {}
 
   ngOnInit() {
@@ -24,7 +27,13 @@ export class SingleOfferComponent implements OnInit {
 
       this.offersService.getOffers().subscribe((offers: Array<IOffer>) => {
         this.activeOffer = offers.find(offer => offer.id === offerId);
+        this.bought = this.shoppingService.isBought(this.activeOffer);
       });
     });
+  }
+
+  buyOffer() {
+    this.shoppingService.buy(this.activeOffer);
+    this.bought = true;
   }
 }
