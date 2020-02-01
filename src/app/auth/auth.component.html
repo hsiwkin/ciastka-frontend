@@ -1,8 +1,12 @@
-<form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
-  <h3>Log in</h3>
+<form
+  [formGroup]="authForm"
+  (ngSubmit)="onLoginSubmit(authForm.value)"
+  *ngIf="inLoginMode"
+>
+  <h3>Logowanie</h3>
   <hr />
   <div class="form-group">
-    <label for="exampleInputEmail1">Email address / login</label>
+    <label for="exampleInputEmail1">Nazwa użytkownika</label>
     <input
       type="email"
       class="form-control"
@@ -14,16 +18,16 @@
       "
     />
     <small id="emailHelp" class="form-text text-muted"
-      >We'll never share your email with anyone else.</small
+      >Nie przekażemy nikomu Twojego emaila.</small
     >
     <span
       *ngIf="!authForm.get('email').valid && authForm.get('email').touched"
       class="invalid-feedback"
-      >Please enter a valid email</span
+      >Podaj poprawny email.</span
     >
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
+    <label for="exampleInputPassword1">Hasło.</label>
     <input
       type="password"
       class="form-control"
@@ -38,7 +42,7 @@
         !authForm.get('password').valid && authForm.get('password').touched
       "
       class="invalid-feedback d-block"
-      >Please enter a password</span
+      >To pole jest obowiązkowe.</span
     >
   </div>
 
@@ -47,6 +51,123 @@
     class="btn btn-primary standard-btn"
     [disabled]="!authForm.valid"
   >
-    Submit
+    Wyślij
+  </button>
+
+  <button
+    type="button"
+    class="btn btn-secondary switch-btn"
+    (click)="switchMode()"
+  >
+    Przejdź do {{ inLoginMode ? "rejestracji" : "strony logowania" }}.
+  </button>
+</form>
+
+<form
+  [formGroup]="registerForm"
+  (ngSubmit)="onRegisterSubmit(registerForm.value)"
+  *ngIf="!inLoginMode"
+>
+  <h3>Rejestracja</h3>
+  <hr />
+  <div class="form-group">
+    <label for="exampleInputEmail1">Adres email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      formControlName="email"
+      [class.is-invalid]="
+        !registerForm.get('email').valid && registerForm.get('email').touched
+      "
+    />
+    <small id="emailHelp" class="form-text text-muted"
+      >Nie przekażemy nikomu Twojego emaila.</small
+    >
+    <span
+      *ngIf="
+        !registerForm.get('email').valid && registerForm.get('email').touched
+      "
+      class="invalid-feedback"
+      >Podaj poprawny email.</span
+    >
+  </div>
+  <div class="form-group">
+    <label for="usernameInput">Nazwa użytkownika</label>
+    <input
+      type="text"
+      class="form-control"
+      id="usernameInput"
+      formControlName="username"
+      [class.is-invalid]="
+        !registerForm.get('username').valid &&
+        registerForm.get('username').touched
+      "
+    />
+    <span
+      *ngIf="
+        !registerForm.get('username').valid &&
+        registerForm.get('username').touched
+      "
+      class="invalid-feedback"
+      >To pole jest obowiązkowe.</span
+    >
+  </div>
+  <div class="form-group">
+    <label for="nameInput">Imię</label>
+    <input
+      type="text"
+      class="form-control"
+      id="nameInput"
+      formControlName="name"
+      [class.is-invalid]="
+        !registerForm.get('name').valid && registerForm.get('name').touched
+      "
+    />
+    <span
+      *ngIf="
+        !registerForm.get('name').valid && registerForm.get('name').touched
+      "
+      class="invalid-feedback"
+      >To pole jest obowiązkowe.</span
+    >
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Hasło</label>
+    <input
+      type="password"
+      class="form-control"
+      [class.is-invalid]="
+        !registerForm.get('password').valid &&
+        registerForm.get('password').touched
+      "
+      id="exampleInputPassword1"
+      formControlName="password"
+    />
+    <span
+      *ngIf="
+        !registerForm.get('password').valid &&
+        registerForm.get('password').touched
+      "
+      class="invalid-feedback d-block"
+      >Podaj hasło</span
+    >
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-primary standard-btn"
+    [disabled]="!registerForm.valid"
+  >
+    Wyślij
+  </button>
+
+  <button
+    type="button"
+    class="btn btn-secondary switch-btn"
+    (click)="switchMode()"
+  >
+    Przejdź do {{ inLoginMode ? "rejestracji" : "strony logowania" }}.
   </button>
 </form>

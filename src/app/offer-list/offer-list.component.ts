@@ -7,11 +7,26 @@ import { OffersService } from "../_services/offers.service";
   styleUrls: ["./offer-list.component.scss"]
 })
 export class OfferListComponent implements OnInit {
-  offers;
+  offers = [];
+  visibleOffers = [];
 
   constructor(private offersService: OffersService) {}
 
   ngOnInit() {
-    this.offers = this.offersService.getOffers();
+    this.offersService.getOffers().subscribe(offers => {
+      this.offers = offers;
+      this.visibleOffers = [...offers];
+    });
+  }
+
+  onFilterChange(value) {
+    const regExp = new RegExp(value, "i");
+    this.visibleOffers = this.offers.filter(offer => {
+      return (
+        regExp.test(offer.title) ||
+        regExp.test(offer.description) ||
+        regExp.test(offer.extendedDescription)
+      );
+    });
   }
 }

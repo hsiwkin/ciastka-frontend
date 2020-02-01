@@ -1,11 +1,12 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+
 import { LandingPageComponent } from "./landing-page/landing-page.component";
 import { OfferListComponent } from "./offer-list/offer-list.component";
 import { SingleOfferComponent } from "./single-offer/single-offer.component";
 import { AuthComponent } from "./auth/auth.component";
-import { MapComponent } from "./map/map.component";
 import { AllOffersMapComponent } from "./all-offers-map/all-offers-map.component";
+import { AuthGuard } from "./_guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -19,14 +20,17 @@ const routes: Routes = [
   {
     path: "offers",
     component: OfferListComponent
+    // canActivate: [AuthGuard]
   },
   {
     path: "offers/:offerId",
     component: SingleOfferComponent
+    // canActivate: [AuthGuard]
   },
   {
     path: "map",
     component: AllOffersMapComponent
+    // canActivate: [AuthGuard]
   }
 ];
 

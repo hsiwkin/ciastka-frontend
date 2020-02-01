@@ -17,24 +17,16 @@
       >
         <a class="nav-link" [routerLink]="['offers']">Lista ofert</a>
       </li>
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a class="nav-link" [routerLink]="['auth']">Logowanie / rejestracja</a>
+      </li>
     </ul>
 
     <div class="nav-functional ml-auto navbar-nav">
-      <div class="input-group search-container nav-item mr-5">
-        <input
-          class="form-control mr-2 nav-item search-container__input"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button
-          class="btn btn-outline-success my-sm-0 nav-item search-container__submit-btn"
-          type="submit"
-        >
-          Search
-        </button>
-      </div>
-
       <div class="nav-item">
         <a
           *ngIf="!userName; else elseBlock"
@@ -56,8 +48,9 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right">
               <a class="dropdown-item" href="#" [routerLink]="['/auth']"
-                >Log Out</a
+                >Podsumowanie</a
               >
+              <a class="dropdown-item" href="#" (click)="logOut()">Wyloguj</a>
             </div>
           </div>
         </ng-template>

@@ -3,7 +3,7 @@
     <h1>
       Znaleźliśmy
       <span class="badge badge-secondary offers-count">
-        {{ (offers | async)?.length }}</span
+        {{ visibleOffers?.length }}</span
       >
       ofert w Twojej okolicy!
     </h1>
@@ -13,12 +13,18 @@
     </p>
   </div>
 
+  <div>
+    <input
+      class="form-control mr-2 nav-item search-container__input"
+      type="search"
+      placeholder="Filtruj"
+      aria-label="Search"
+      (input)="onFilterChange($event.target.value)"
+    />
+  </div>
+
   <div class="offers-container">
-    <div
-      *ngFor="let offer of offers | async"
-      class="card"
-      style="width: 18rem;"
-    >
+    <div *ngFor="let offer of visibleOffers" class="card" style="width: 18rem;">
       <img [src]="offer.imageUrl" class="card-img-top" alt="..." />
       <div class="card-body">
         <h5 class="card-title">{{ offer.title }}</h5>
