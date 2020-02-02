@@ -4,9 +4,10 @@ import { AllOffersMapComponent } from "./all-offers-map/all-offers-map.component
 import { AuthComponent } from "./auth/auth.component";
 import { LandingPageComponent } from "./landing-page/landing-page.component";
 import { OfferListComponent } from "./offer-list/offer-list.component";
+import { SellComponent } from "./sell/sell.component";
 import { SingleOfferComponent } from "./single-offer/single-offer.component";
 import { SummaryComponent } from "./summary/summary.component";
-import { SellComponent } from "./sell/sell.component";
+import { AuthGuard } from "./_guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -19,28 +20,28 @@ const routes: Routes = [
   },
   {
     path: "offers",
-    component: OfferListComponent
-    // canActivate: [AuthGuard]
+    component: OfferListComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "offers/:offerId",
-    component: SingleOfferComponent
-    // canActivate: [AuthGuard]
+    component: SingleOfferComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "map",
-    component: AllOffersMapComponent
-    // canActivate: [AuthGuard]
+    component: AllOffersMapComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "summary",
-    component: SummaryComponent
-    // canActivate: [AuthGuard]
+    component: SummaryComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "sell",
-    component: SellComponent
-    // canActivate: [AuthGuard]
+    component: SellComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

@@ -35,7 +35,7 @@ export class AuthService {
   }
 
   signUp(authData: IAuth): Observable<any> {
-    const signUpPath = path.join(this.authEndpoint, "register");
+    const signUpPath = `${this.authEndpoint}/register`;
 
     return this.http.post(signUpPath, {
       password: authData.password,
@@ -44,7 +44,6 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    // TODO
-    return false;
+    return !!localStorage.getItem("access_token");
   }
 }
