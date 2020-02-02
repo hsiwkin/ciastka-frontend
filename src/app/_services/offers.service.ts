@@ -24,4 +24,8 @@ export class OffersService {
       })
     );
   }
+
+  addOffer(offer: IOffer) {
+    return this.http.post(`${environment.API_ENDPOINT}/api/offers`, offer);
+  }
 }

@@ -24,6 +24,13 @@
       >
         <a class="nav-link" [routerLink]="['auth']">Logowanie / rejestracja</a>
       </li>
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a class="nav-link" [routerLink]="['sell']">Sprzedaj ciastko</a>
+      </li>
     </ul>
 
     <div class="nav-functional ml-auto navbar-nav">

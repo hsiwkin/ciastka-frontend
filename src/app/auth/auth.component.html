@@ -1,5 +1,5 @@
 <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
-  <h3>Logowanie</h3>
+  <h3>{{ inLoginMode ? "Logowanie" : "Rejestracja" }}</h3>
   <hr />
   <div class="form-group">
     <label for="exampleInputEmail1">Nazwa użytkownika</label>

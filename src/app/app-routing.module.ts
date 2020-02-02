@@ -6,6 +6,7 @@ import { LandingPageComponent } from "./landing-page/landing-page.component";
 import { OfferListComponent } from "./offer-list/offer-list.component";
 import { SingleOfferComponent } from "./single-offer/single-offer.component";
 import { SummaryComponent } from "./summary/summary.component";
+import { SellComponent } from "./sell/sell.component";
 
 const routes: Routes = [
   {
@@ -34,6 +35,11 @@ const routes: Routes = [
   {
     path: "summary",
     component: SummaryComponent
+    // canActivate: [AuthGuard]
+  },
+  {
+    path: "sell",
+    component: SellComponent
     // canActivate: [AuthGuard]
   }
 ];

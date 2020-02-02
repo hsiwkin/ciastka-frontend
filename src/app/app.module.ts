@@ -14,6 +14,7 @@ import { AuthComponent } from "./auth/auth.component";
 import { MapComponent } from "./map/map.component";
 import { AllOffersMapComponent } from "./all-offers-map/all-offers-map.component";
 import { SummaryComponent } from "./summary/summary.component";
+import { SellComponent } from './sell/sell.component';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -29,7 +30,8 @@ export function tokenGetter() {
     AuthComponent,
     MapComponent,
     AllOffersMapComponent,
-    SummaryComponent
+    SummaryComponent,
+    SellComponent
   ],
   imports: [
     BrowserModule,

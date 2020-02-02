@@ -1,0 +1,67 @@
+<h2>Wypełnij dane produktu, który chcesz sprzedać</h2>
+
+<hr />
+
+<form [formGroup]="sellForm" (ngSubmit)="onSubmit(sellForm.value)">
+  <div class="form-group">
+    <label for="title">Tytuł zamówienia</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      formControlName="title"
+      [class.is-invalid]="
+        !sellForm.get('title').valid && sellForm.get('title').touched
+      "
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="imageUrl">Link do obrazka</label>
+    <input
+      type="text"
+      class="form-control"
+      id="imageUrl"
+      formControlName="imageUrl"
+      [class.is-invalid]="
+        !sellForm.get('imageUrl').valid && sellForm.get('imageUrl').touched
+      "
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="desciption">Krótki opis</label>
+    <textarea
+      class="form-control"
+      id="desciption"
+      rows="2"
+      formControlName="description"
+      [class.is-invalid]="
+        !sellForm.get('description').valid &&
+        sellForm.get('description').touched
+      "
+    ></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="extendedDescription">Długi opis</label>
+    <textarea
+      class="form-control"
+      id="extendedDescription"
+      rows="3"
+      formControlName="extendedDescription"
+      [class.is-invalid]="
+        !sellForm.get('extendedDescription').valid &&
+        sellForm.get('extendedDescription').touched
+      "
+    ></textarea>
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-primary standard-btn"
+    [disabled]="!sellForm.valid"
+  >
+    Sprzedaj ciastko!
+  </button>
+</form>
