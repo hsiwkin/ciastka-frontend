@@ -1,7 +1,7 @@
 import * as moment from "moment";
 
 export interface IOffer {
-  id: number;
+  _id: string;
   imageUrl: string;
   title: string;
   description: string;

@@ -14,22 +14,14 @@ export class OffersService {
   constructor(private http: HttpClient) {}
 
   getOffers(page: number = 0, size: number = 30): Observable<Array<IOffer>> {
-    const params = new HttpParams()
-      .set("page", "" + page)
-      .set("size", "" + size);
-
-    return this.http
-      .get(`${environment.API_ENDPOINT}/api/offers`, {
-        params
+    return this.http.get(`${environment.API_ENDPOINT}/api/offers`).pipe(
+      map((offers: any) => {
+        return offers.offers.map(offer => {
+          offer.updatedAt = moment(offer.updatedAt, "DD.MM.YYYY", "pl");
+          offer.location = [offer.xloc, offer.yloc];
+          return offer;
+        });
       })
-      .pipe(
-        map((offers: any) => {
-          return offers.content.map(offer => {
-            offer.updatedAt = moment(offer.updatedAt, "DD.MM.YYYY", "pl");
-            offer.location = [offer.xloc, offer.yloc];
-            return offer;
-          });
-        })
-      );
+    );
   }
 }

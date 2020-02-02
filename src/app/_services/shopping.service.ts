@@ -12,18 +12,18 @@ export class ShoppingService {
   constructor(private offersService: OffersService) {}
 
   buy(offer: IOffer) {
-    const bought: Array<number> = this.getBoughtIds();
-    bought.push(offer.id);
+    const bought: Array<string> = this.getBoughtIds();
+    bought.push(offer._id);
 
     localStorage.setItem(this.boughtProductsKey, JSON.stringify(bought));
   }
 
   isBought(offer: IOffer): Boolean {
-    return Boolean(this.getBoughtIds().find(elemId => elemId === offer.id));
+    return Boolean(this.getBoughtIds().find(elemId => elemId === offer._id));
   }
 
-  getBoughtIds(): Array<number> {
-    const bought: Array<number> = JSON.parse(
+  getBoughtIds(): Array<string> {
+    const bought: Array<string> = JSON.parse(
       localStorage.getItem(this.boughtProductsKey)
     );
 
@@ -37,7 +37,7 @@ export class ShoppingService {
       .getOffers()
       .pipe(
         map(offers =>
-          offers.filter(offer => boughtIds.find(id => offer.id === id))
+          offers.filter(offer => boughtIds.find(id => offer._id === id))
         )
       );
   }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_ENDPOINT: "https://ciastkazonback.herokuapp.com"
+  API_ENDPOINT: "http://localhost:5000"
 };
 
 /*

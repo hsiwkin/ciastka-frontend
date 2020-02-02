@@ -1,9 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
-
+import { Router } from "@angular/router";
+import { IAuth } from "../_interfaces/auth.interface";
 import { AuthService } from "../_services/auth.service";
-import { IAuth, IRegisterData } from "../_interfaces/auth.interface";
 
 @Component({
   selector: "app-auth",
@@ -12,48 +11,42 @@ import { IAuth, IRegisterData } from "../_interfaces/auth.interface";
 })
 export class AuthComponent implements OnInit {
   authForm;
-  registerForm;
   inLoginMode = true;
 
   constructor(
-    private formBuilder: FormBuilder,
+    formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router
   ) {
     this.authForm = formBuilder.group({
-      email: new FormControl("", Validators.required),
-      password: new FormControl("", Validators.required)
-    });
-
-    this.registerForm = formBuilder.group({
-      email: new FormControl("", Validators.required),
-      password: new FormControl("", Validators.required),
       username: new FormControl("", Validators.required),
-      name: new FormControl("", Validators.required)
+      password: new FormControl("", Validators.required)
     });
   }
 
   ngOnInit() {}
 
-  onLoginSubmit(authData: IAuth) {
+  onSubmit(authData: IAuth) {
     if (this.authForm.valid) {
-      this.authService.logIn(authData).subscribe(result => console.log(result));
-    }
-  }
-
-  onRegisterSubmit(authData: IRegisterData) {
-    if (this.registerForm.valid) {
-      console.log("register", authData);
-      this.authService.signUp(authData).subscribe(result =>
+      if (this.inLoginMode) {
         this.authService
           .logIn({
-            email: authData.username,
+            username: authData.username,
             password: authData.password
           })
-          .subscribe(result => {
-            this.router.navigate(["/"]);
-          })
-      );
+          .subscribe(result => this.router.navigate(["/"]));
+      } else {
+        this.authService.signUp(authData).subscribe(result =>
+          this.authService
+            .logIn({
+              username: authData.username,
+              password: authData.password
+            })
+            .subscribe(result => {
+              this.router.navigate(["/"]);
+            })
+        );
+      }
     }
   }
 

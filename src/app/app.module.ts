@@ -13,7 +13,7 @@ import { SingleOfferComponent } from "./single-offer/single-offer.component";
 import { AuthComponent } from "./auth/auth.component";
 import { MapComponent } from "./map/map.component";
 import { AllOffersMapComponent } from "./all-offers-map/all-offers-map.component";
-import { SummaryComponent } from './summary/summary.component';
+import { SummaryComponent } from "./summary/summary.component";
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -38,7 +38,12 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ["ciastkazonback.herokuapp.com"]
+        whitelistedDomains: [
+          "localhost",
+          "http://localhost",
+          "localhost:5000",
+          "http://localhost:5000"
+        ]
       }
     }),
     ReactiveFormsModule

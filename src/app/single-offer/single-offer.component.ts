@@ -23,10 +23,10 @@ export class SingleOfferComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      const offerId: number = +params.get("offerId");
+      const offerId: string = params.get("offerId");
 
       this.offersService.getOffers().subscribe((offers: Array<IOffer>) => {
-        this.activeOffer = offers.find(offer => offer.id === offerId);
+        this.activeOffer = offers.find(offer => offer._id === offerId);
         this.bought = this.shoppingService.isBought(this.activeOffer);
       });
     });
